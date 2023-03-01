@@ -25,6 +25,10 @@
             />
             <button>Send</button>
           </form>
+          <div class="send-file">
+            <input type="file" id="file" name="file" class="inputfile" />
+            <label for="file">Choose a file</label>
+          </div>
           <button id="send-location">Send location</button>
         </div>
       </div>
@@ -41,6 +45,18 @@
         </div>
       </div>
     </script>
+
+    <script id="image-template" type="text/html">
+        <div class="message">
+          <p class="message_title {{colorClass}}">
+            <span class="message__name">{{username}}</span>
+            <span class="message__meta">{{createdAt}}</span>
+          </p>
+          <div class="message_content {{colorClass}}">
+            <p><img src="{{url}}" class="message__image"></p>
+          </div>
+        </div>
+      </script>
 
     <script id="location-message-template" type="text/html">
       <div class="message">

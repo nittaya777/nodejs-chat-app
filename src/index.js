@@ -6,6 +6,7 @@ const Filter = require("bad-words");
 const {
   generateMessage,
   generateLocationMessage,
+  generateImage,
 } = require("./utils/messages");
 const {
   addUser,
@@ -71,6 +72,11 @@ io.on("connection", (socket) => {
     callback();
   });
 
+  socket.on("image", (info) => {
+    const user = getUser(socket.id);
+    io.to(user.room).emit("image", generateImage(user.username, info.buffer));
+  });
+
   socket.on("disconnect", () => {
     const user = removeUser(socket.id);
     if (user) {
@@ -78,10 +84,10 @@ io.on("connection", (socket) => {
         "message",
         generateMessage("Admin", `${user.username} has left`)
       );
-      io.to(user.room).emit('roomData',{
+      io.to(user.room).emit("roomData", {
         room: user.room,
-        users: getUsersInRoom(user.room)
-      })
+        users: getUsersInRoom(user.room),
+      });
     }
   });
 });

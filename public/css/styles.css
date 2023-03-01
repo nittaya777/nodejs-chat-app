@@ -169,11 +169,21 @@ button:disabled {
   align-self: flex-end;
 }
 
-.msg-org p{
-    background: #E3E6E8;
-    color:#777;
-    padding: 3px 1rem;
-    border-radius: 16px;
+.message__image {
+    width: auto;
+    height: 200px;
+}
+.msg.img p,
+.msg-self.img p {
+  background-color: transparent;
+  padding: 0;
+}
+
+.msg-org p {
+  background: #e3e6e8;
+  color: #777;
+  padding: 3px 1rem;
+  border-radius: 16px;
 }
 /* Message Composition Styles */
 
@@ -210,8 +220,8 @@ button:disabled {
   background: #2c2f3a;
   padding: 24px;
 }
-.room-title span{
-    font-size: 16px;
+.room-title span {
+  font-size: 16px;
 }
 
 .list-title {
@@ -225,4 +235,30 @@ button:disabled {
   list-style-type: none;
   font-weight: 300;
   padding: 12px 24px 0 24px;
+}
+/* File */
+.send-file {
+  margin-right: 16px;
+}
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+.inputfile + label {
+  cursor: pointer;
+  padding: 12px;
+  font-size: 14px;
+  margin-bottom: 0;
+  color: white;
+  background: #7c5cbf;
+  display: inline-block;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+  transition: background 0.3s ease;
 }
